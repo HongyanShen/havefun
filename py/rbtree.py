@@ -166,13 +166,14 @@ class rb_tree:
             while d.left:
                 d = d.left
 
-        d.value, n.value = n.value, d.value
+        # 在左子树中找后继节点
         if d is n:
             if d.left:
                 d = d.left
                 while d.right:
                     d = d.right
 
+        d.value, n.value = n.value, d.value
 
         repalce = d.left if d.left else d.right # 后继节点的替换节点
         if repalce: # 直接用子节点替代被删除的节点，该子节点必然为红色，只需要将其涂黑即可
@@ -301,5 +302,12 @@ if __name__ == '__main__':
     rbt.remove(7)
     rbt.remove(6)
     rbt.remove(9)
+    rbt.remove(5)
+    rbt.remove(10)
+    rbt.remove(0)
+    rbt.remove(1)
+    rbt.remove(3)
+    rbt.remove(4)
+    rbt.remove(2)
 
     print_rb_tree(rbt)
